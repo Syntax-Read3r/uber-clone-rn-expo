@@ -43,14 +43,14 @@ const HomeScreen = () => {
 						language: "en",
 					}}
 					onPress={(data, details = null) => {
-						dispatchEvent(
+						dispatch(
 							setOrigin({
 								location: details.geometry.location,
-								discription: data.description,
+								description: data.description,
 							})
 						);
 
-						dispatch(setDestication(null));
+						dispatch(setDestination(null));
 					}}
 					fetchDetails={true}
 					enablePoweredByContainer={false}
