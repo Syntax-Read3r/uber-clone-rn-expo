@@ -3,12 +3,13 @@ import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import NavOptions from "../components/NavOptions";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { API_KEY, test_key } from "@env";
+import { API_KEY } from "@env";
 import { useDispatch } from "react-redux";
 import { setOrigin, setDestination } from "../slices/navSlice";
 
 const HomeScreen = () => {
 	const dispatch = useDispatch();
+
 	const data =
 		"https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/2560px-Uber_logo_2018.svg.png";
 
@@ -50,10 +51,18 @@ const HomeScreen = () => {
 							})
 						);
 
-						dispatch(setDestination(null));
+						const origin = {
+							location: details.geometry.location,
+							description: data.description,
+						};
+
+						console.log("1 --- ORIGIN", origin);
+
+						// dispatch(setDestination(null));
 					}}
-					fetchDetails={true}
 					enablePoweredByContainer={false}
+					fetchDetails={true}
+					returnKeyType={"search"}
 					minLength={2}
 					nearbyPlacesAPI="GooglePlacesSearch"
 					debounce={400} // This is a delay which will be executed when the user stops typing for a certain amount of time, in this case it's 400 milliseconds
