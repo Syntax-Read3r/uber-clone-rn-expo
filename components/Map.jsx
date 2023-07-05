@@ -5,10 +5,8 @@ import tw from "tailwind-react-native-classnames";
 import { useSelector } from "react-redux";
 import { selectOrigin } from "../slices/navSlice";
 
-
-
 const Map = () => {
-const origin = useSelector(selectOrigin)
+	const origin = useSelector(selectOrigin);
 
 	return (
 		<MapView
@@ -18,9 +16,21 @@ const origin = useSelector(selectOrigin)
 				latitude: origin.location.lat,
 				longitude: origin.location.lng,
 				latitudeDelta: 0.005,
-				longitudeDelta: 0.005
+				longitudeDelta: 0.005,
 			}}
-		/>
+		>
+			{origin?.location && (
+				<Marker
+					coordinate={{
+						latitude: origin.location.lat,
+						longitude: origin.location.lng,
+					}}
+					title="Origin"
+					description="origin.description"
+					identifier="origin"
+				/>
+			)}
+		</MapView>
 	);
 };
 
