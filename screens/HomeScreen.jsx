@@ -6,6 +6,7 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import { API_KEY } from "@env";
 import { useDispatch } from "react-redux";
 import { setOrigin, setDestination } from "../slices/navSlice";
+import NavFavourites from "../components/NavFavourites";
 
 const data =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Uber_logo_2018.svg/2560px-Uber_logo_2018.svg.png";
@@ -65,6 +66,7 @@ const HomeScreen = () => {
                 />
 
                 <NavOptions />
+				<NavFavourites />
             </View>
         </SafeAreaView>
     );
